@@ -1,0 +1,61 @@
+.login-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 2rem;
+  border: 1px solid #ff69b4; /* Neon pink border */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(255, 105, 180, 0.4); /* Neon pink shadow */
+  background-color: #121212; /* Dark background */
+  background-image: url('../images/layOutBackground.png'); /* Path to your image */
+  background-size: cover; /* Cover the entire element */
+  background-repeat: no-repeat; /* No repeating */
+}
+
+.login-title {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #ff69b4; /* Neon pink text color */
+}
+
+.login-form .form-group {
+  margin-bottom: 1rem;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #ff69b4; /* Neon pink text color */
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ff69b4; /* Neon pink border */
+  border-radius: 4px;
+  font-size: 1rem;
+  background-color: #1f1f1f; /* Dark background */
+  color: #fff; /* White text */
+}
+
+.login-button {
+  width: 100%;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #ff69b4; /* Neon pink background */
+  color: #000000; /* Black text */
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.login-button:hover {
+  background-color: #e600e6; /* Slightly darker neon pink */
+  box-shadow: 0 0 10px 2px rgba(255, 105, 180, 0.7); /* Pink glow effect on hover */
+}
+
+.error-message {
+  color: red;
+  margin-bottom: 1rem;
+  text-align: center;
+}

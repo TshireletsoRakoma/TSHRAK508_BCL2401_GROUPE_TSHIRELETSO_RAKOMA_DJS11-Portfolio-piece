@@ -1,0 +1,51 @@
+.favorites-container {
+  padding: 20px;
+}
+
+.favorites-list {
+  list-style: none;
+  padding: 0;
+}
+
+.favorite-item {
+  position: relative; /* Ensure relative positioning for absolute positioning of heart */
+  margin-bottom: 20px;
+}
+
+.favorite-item h3,
+.favorite-item p {
+  margin: 0 0 5px 0;
+}
+
+.favorite-item .favorite-icon {
+  position: absolute;
+  bottom: 10px; /* Adjust vertical position as needed */
+  right: 10px; /* Adjust horizontal position as needed */
+  font-size: 1.5rem; /* Adjust icon size as needed */
+  color: #9969ff; /* Neon pink color */
+  cursor: pointer;
+  transition: color 0.3s, text-shadow 0.3s;
+  z-index: 1000;
+}
+
+.favorite-item .favorite-icon.favorite {
+  color: #ff1414; /* Darker neon pink color when it's a favorite */
+}
+
+.favorite-item .favorite-icon:hover {
+  color: #fbfafa; /* Darker neon pink on hover */
+  text-shadow: 0 0 10px #5db0ef; /* Glow effect on hover */
+}
+
+button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+button:hover {
+  background-color: #c82333;
+}
