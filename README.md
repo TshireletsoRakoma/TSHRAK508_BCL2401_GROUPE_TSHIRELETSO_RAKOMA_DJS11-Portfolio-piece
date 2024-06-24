@@ -51,8 +51,8 @@ The main styling for the app is defined in `Home.css`:
 - **Responsive Design**: Adjusts the layout based on screen size.
 
 ## User Information
-- **Username**: yourusername
-- **Password**: yourpassword
+- **Username**: Tshire
+- **Password**: 1234
 
 ## Contributing
 If you would like to contribute to this project, please fork the repository and submit a pull request with your changes.
@@ -63,3 +63,5 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ## Contact
 For any questions or issues, please contact `yourusername` at `yourusername@example.com`.
 
+
+## Netlify link[ https://djs11.netlify.app/]
