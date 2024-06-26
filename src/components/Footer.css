@@ -1,37 +1,106 @@
 /* src/components/Footer.css */
 
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: url('../images/layOutBackground.png') no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Align items at the start of the flex container */
+  flex-direction: column; /* Stack items vertically */
+}
+
+.login-container {
+  max-width: 320px; /* Reduced by 20% from 400px */
+  margin: 5% auto 0 auto; /* Added 5% margin at the top */
+  padding: 2rem;
+  border: 1px solid #ff6969; /* Neon pink border */
+  border-radius: 20%; /* Adjusted border radius */
+  box-shadow: 0 4px 8px rgba(255, 105, 105, 0.4); /* Neon pink shadow */
+  background-color: rgba(18, 18, 18, 0.352); /* Transparent dark background */
+}
+
+.login-title {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #ff6969; /* Neon pink text color */
+}
+
+.login-form .form-group {
+  margin-bottom: 1rem;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #ff6969; /* Neon pink text color */
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #66b7ed; /* Neon pink border */
+  border-radius: 4px;
+  font-size: 1rem;
+  background-color: #1f1f1f; /* Dark background */
+  color: #fff; /* White text */
+}
+
+.login-button {
+  width: 100%;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #ff6969; /* Neon pink background */
+  color: #000000; /* Black text */
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.login-button:hover {
+  background-color: #e60000; /* Slightly darker neon pink */
+  box-shadow: 0 0 10px 2px rgba(105, 255, 165, 0.7); /* Pink glow effect on hover */
+}
+
+.error-message {
+  color: red;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
 .footer {
-    background-color: #121212; /* Dark background color */
-    color: #ff69b4; /* Neon pink text color */
-    text-align: center;
-    padding: 20px 0;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    z-index: 99999;
-    box-shadow: 0 -2px 10px rgba(255, 105, 180, 0.4); /* Pink glow shadow */
-  }
-  
-  .footer-content {
-    margin: 0 auto;
-    max-width: 1200px;
-    padding: 0 20px;
-  }
-  
-  .footer p {
-    margin: 0;
-    font-size: 14px;
-    color: #ff69b4; /* Neon pink text color */
-  }
-  
-  .footer a {
-    color: #ff69b4; /* Neon pink link color */
-    text-decoration: none;
-    transition: color 0.3s, text-shadow 0.3s;
-  }
-  
-  .footer a:hover {
-    color: #ff1493; /* Darker neon pink on hover */
-    text-shadow: 0 0 10px #ff1493; /* Glow effect on hover */
-  }
-  
+  background-color: #29262634; /* Dark background color */
+  color: #ff6969; /* Neon pink text color */
+  text-align: center;
+  padding: 20px 0;
+  width: 100%;
+  z-index: 99999;
+  box-shadow: 0 -2px 10px rgba(255, 105, 105, 0.4); /* Pink glow shadow */
+  margin-top: 2rem; /* Added margin to create gap between login container and footer */
+}
+
+.footer-content {
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 0 20px;
+}
+
+.footer p {
+  margin: 0;
+  font-size: 14px;
+  color: #ff6969; /* Neon pink text color */
+}
+
+.footer a {
+  color: #ff6969; /* Neon pink link color */
+  text-decoration: none;
+  transition: color 0.3s, text-shadow 0.3s;
+}
+
+.footer a:hover {
+  color: #ff1414; /* Darker neon pink on hover */
+  text-shadow: 0 0 10px #ff1493; /* Glow effect on hover */
+}

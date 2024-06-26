@@ -22,10 +22,15 @@ const Yourfav = () => {
       <ul className="favorites-list">
         {favoriteEpisodes.map((episode) => (
           <li key={episode.id} className="favorite-item">
-            <h3>{episode.title}</h3>
-            <p>Show: <Link to={`/show/${episode.showId}`}>{episode.showTitle}</Link></p>
-            <p>Season: {episode.seasonNumber}</p>
-            <button onClick={() => removeFavorite(episode.id)}>Remove from Favorites</button>
+            <div className="podcast-image">
+              <img src={episode.image} alt={episode.title} />
+            </div>
+            <div className="podcast-details">
+              <h3>{episode.title}</h3>
+              <p>Show: <Link to={`/show/${episode.showId}`}>{episode.showTitle}</Link></p>
+              <p>Season: {episode.seasonNumber}</p>
+              <button onClick={() => removeFavorite(episode.id)}>Remove from Favorites</button>
+            </div>
           </li>
         ))}
       </ul>

@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react';
+// src/components/Home.jsx
+
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { fetchPreviews } from '../services/PodcastService.js';
 import { useFavorites } from '../contexts/FavouriteContext.jsx';
-import AudioPlayer from './AudioPlayer';
-import './Home.css';
+import './Home.css'; // Updated CSS import
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const Home = () => {
@@ -14,6 +15,8 @@ const Home = () => {
   const [sortOption, setSortOption] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedGenre, setSelectedGenre] = useState('All');
+  const [viewMode, setViewMode] = useState('list'); // State for view mode
+
   const { favorites, addFavorite, removeFavorite, isFavorite } = useFavorites();
 
   const genres = {
@@ -107,6 +110,10 @@ const Home = () => {
     setDisplayedPodcasts(filtered);
   };
 
+  const toggleViewMode = () => {
+    setViewMode(viewMode === 'list' ? 'grid' : 'list');
+  };
+
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -122,7 +129,7 @@ const Home = () => {
 
   return (
     <div className="home">
-      <h1>Browse Podcasts</h1>
+      <h1>Podcasts</h1>
       <div className="filter-bar">
         <div className="genre-filter">
           <select onChange={(e) => handleSortChange(e.target.value)}>
@@ -148,10 +155,13 @@ const Home = () => {
             style={{ borderRadius: '50px' }}
           />
         </div>
+        <button className="view-mode-toggle-button" onClick={toggleViewMode}>
+          {viewMode === 'list' ? 'Grid View' : 'List View'}
+        </button>
       </div>
-      <ul className="podcast-list">
-        {displayedPodcasts.map((podcast) => (
-          <li key={podcast.id} className="podcast-item">
+      <ul className={`podcast-list ${viewMode === 'grid' ? 'grid-view' : ''}`}>
+        {displayedPodcasts.map((podcast, index) => (
+          <li key={podcast.id} className={`podcast-item ${viewMode}`}>
             <div className="podcast-image">
               <img src={podcast.image} alt={podcast.title} />
             </div>
@@ -162,7 +172,6 @@ const Home = () => {
                 </Link>
               </h3>
               <div className="action-buttons">
-                
                 <i
                   className={`fas fa-heart ${isFavorite(podcast.id) ? 'favorite-icon favorite' : 'favorite-icon'}`}
                   onClick={() => handleFavoriteToggle(podcast)}

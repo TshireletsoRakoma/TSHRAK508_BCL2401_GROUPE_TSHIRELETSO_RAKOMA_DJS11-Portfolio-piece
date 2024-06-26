@@ -1,20 +1,43 @@
+/* Make the background image cover the entire page */
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: url('../images/layOutBackground.png') no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .login-container {
-  max-width: 400px;
-  margin: 0 auto;
+  max-width: 320px; /* Reduced by 20% from 400px */
+  margin: 5% auto 0 auto; /* Added 5% margin at the top */
   padding: 2rem;
-  border: 1px solid #ff69b4; /* Neon pink border */
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(255, 105, 180, 0.4); /* Neon pink shadow */
-  background-color: #121212; /* Dark background */
-  background-image: url('../images/layOutBackground.png'); /* Path to your image */
-  background-size: cover; /* Cover the entire element */
-  background-repeat: no-repeat; /* No repeating */
+  border: 1px solid #ff6969; /* Neon pink border */
+  border-radius: 20%; /* Adjusted border radius */
+  box-shadow: 0 4px 8px rgba(255, 105, 105, 0.4); /* Neon pink shadow */
+  background-color: transparent; /* Transparent background */
+  position: relative; /* Ensure position is relative for z-index */
+  z-index: 1; /* Set z-index to keep it above body background */
+}
+
+.login-container:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: inherit; /* Inherit background from body */
+  z-index: -1; /* Send behind the container */
+  border-radius: inherit; /* Inherit border radius */
 }
 
 .login-title {
   text-align: center;
   margin-bottom: 1rem;
-  color: #ff69b4; /* Neon pink text color */
+  color: #ff6969; /* Neon pink text color */
 }
 
 .login-form .form-group {
@@ -24,13 +47,13 @@
 .form-label {
   display: block;
   margin-bottom: 0.5rem;
-  color: #ff69b4; /* Neon pink text color */
+  color: #ff6969; /* Neon pink text color */
 }
 
 .form-input {
   width: 100%;
   padding: 0.5rem;
-  border: 1px solid #ff69b4; /* Neon pink border */
+  border: 1px solid #66b7ed; /* Neon pink border */
   border-radius: 4px;
   font-size: 1rem;
   background-color: #1f1f1f; /* Dark background */
@@ -42,7 +65,7 @@
   padding: 0.75rem;
   border: none;
   border-radius: 4px;
-  background-color: #ff69b4; /* Neon pink background */
+  background-color: #ff6969; /* Neon pink background */
   color: #000000; /* Black text */
   font-size: 1rem;
   cursor: pointer;
@@ -50,8 +73,8 @@
 }
 
 .login-button:hover {
-  background-color: #e600e6; /* Slightly darker neon pink */
-  box-shadow: 0 0 10px 2px rgba(255, 105, 180, 0.7); /* Pink glow effect on hover */
+  background-color: #e60000; /* Slightly darker neon pink */
+  box-shadow: 0 0 10px 2px rgba(105, 255, 165, 0.7); /* Pink glow effect on hover */
 }
 
 .error-message {

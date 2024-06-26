@@ -1,26 +1,30 @@
-import React from 'react';
-import Episode from './Episode';  // Adjust path as needed
+import React, { useState } from 'react';
 
-const Season = ({ season, onPlay, onPause }) => {
+const MovieSeasonSelector = ({ seasons }) => {
+  const [selectedSeason, setSelectedSeason] = useState('');
+
+  const handleSeasonChange = (event) => {
+    setSelectedSeason(event.target.value);
+    // Handle any logic when season selection changes
+  };
+
   return (
-    <div className="season">
-      <h4 className="season-title">Season {season.number}</h4>
-      <ul className="episodes-list">
-        {season.episodes && season.episodes.length > 0 ? (
-          season.episodes.map((episode) => (
-            <Episode
-              key={episode.id}
-              episode={episode}
-              onPlay={onPlay}
-              onPause={onPause}
-            />
-          ))
-        ) : (
-          <li>No episodes available for this season</li>
-        )}
-      </ul>
+    <div className="season-selector">
+      <label htmlFor="seasonSelect">Select Season:</label>
+      <select
+        id="seasonSelect"
+        value={selectedSeason}
+        onChange={handleSeasonChange}
+      >
+        <option value="">Select...</option>
+        {seasons.map((season) => (
+          <option key={season.id} value={season.id}>
+            Season {season.number}
+          </option>
+        ))}
+      </select>
     </div>
   );
 };
 
-export default Season;
+export default MovieSeasonSelector;
