@@ -1,15 +1,20 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { CategoryContext } from './context/CatergoryContext';
+import { CategoryContext } from './context/CategoryContext'; // Adjusted import path
 import { useAuth } from '../contexts/AuthContext';
-import './Header.css'; // Import your CSS file for header styles
+import './Header.css'; // Adjusted CSS import path
 
 const Header = () => {
   const { setSelectedCategory } = useContext(CategoryContext);
   const { user, logout } = useAuth();
+  const [showError, setShowError] = useState(false); // State to manage error message visibility
 
   const handleHomeClick = () => {
     setSelectedCategory('All');
+  };
+
+  const toggleError = () => {
+    setShowError((prev) => !prev); // Toggle error message visibility
   };
 
   return (
@@ -17,16 +22,13 @@ const Header = () => {
       <Link to="/" className="logo-link" onClick={handleHomeClick}>
         {/* SVG logo with neon pink theme */}
         <svg className="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" width="200" height="50">
-  <text x="5" y="35" fontSize="28" fontWeight="bold" fill="#00ffff">Film Focus🎥</text>
-  <text x="110" y="35" fontSize="28" fontWeight="bold" fill="#00ffff"></text>
-</svg>
-
-
+          <text x="5" y="35" fontSize="28" fontWeight="bold" fill="#00ffff">Film Focus🎥</text>
+        </svg>
       </Link>
       <nav>
         <ul className="nav-links">
           <li><Link to="/" onClick={handleHomeClick}>Home</Link></li>
-          <li><Link to="/yourfav">Favourites</Link></li>
+          <li><Link to="/yourfav">Favorites</Link></li>
           <li><Link to="/about">About</Link></li>
           <li><Link to="/contact">Contact</Link></li>
           {user ? (
@@ -34,6 +36,17 @@ const Header = () => {
           ) : (
             <li><Link to="/login">Login</Link></li>
           )}
+          <li className="error-notification">
+            <button onClick={toggleError} className="error-button">
+              {showError ? 'Hide Error' : 'Show Error'}
+            </button>
+            {showError && (
+              <div className="error-message">
+                {/* Replace with your actual error message or component */}
+                <p>Error: Unable to fetch data.</p>
+              </div>
+            )}
+          </li>
         </ul>
       </nav>
     </header>
