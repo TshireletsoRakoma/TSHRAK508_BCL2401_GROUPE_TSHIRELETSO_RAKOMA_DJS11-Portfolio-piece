@@ -1,7 +1,7 @@
 import React from 'react'; // Importing React library
 import { Link } from 'react-router-dom'; // Importing Link component from react-router-dom for navigation
 import { useFavorites } from '../contexts/FavouriteContext'; // Importing useFavorites hook from FavouriteContext
-import './Header.css'; // Importing CSS file for styling
+import './YourFav.css'; // Importing CSS file for styling
 
 const Yourfav = () => {
   const { favorites, removeFavorite } = useFavorites(); // Destructuring favorites and removeFavorite from useFavorites hook
@@ -9,8 +9,13 @@ const Yourfav = () => {
   const favoriteEpisodes = Object.values(favorites); // Converting the favorites object into an array of favorite episodes
 
   if (favoriteEpisodes.length === 0) { // Checking if there are no favorite episodes
-    return <div style={{ color: 'black' }}>Currently, there are no favorite episodes!</div>; // Display message when there are no favorite episodes, with black text color
+    return <div className="empty-favorites">Currently, there are no favorite episodes!</div>; // Display message when there are no favorite episodes
   }
+
+  // Function to handle removing a favorite episode
+  const handleRemoveFavorite = (episodeId) => {
+    removeFavorite(episodeId); // Calling removeFavorite function from context to remove the episode
+  };
 
   return (
     <div className="favorites-container"> {/* Container for the list of favorite episodes */}
@@ -27,7 +32,7 @@ const Yourfav = () => {
                 Show: <Link to={`/show/${episode.showId}`}>{episode.showTitle}</Link> {/* Link to the show's page */}
               </p>
               <p>Season: {episode.seasonNumber}</p> {/* Display season number */}
-              <button onClick={() => removeFavorite(episode.id)}>Remove from Favorites</button> {/* Button to remove episode from favorites */}
+              <button onClick={() => handleRemoveFavorite(episode.id)}>Remove from Favorites</button> {/* Button to remove episode from favorites */}
             </div>
           </li>
         ))}

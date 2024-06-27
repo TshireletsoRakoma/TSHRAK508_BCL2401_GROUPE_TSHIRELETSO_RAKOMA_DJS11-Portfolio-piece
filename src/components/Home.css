@@ -153,11 +153,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .favorite-icon.favorite {
-  color: #ebe1e100; /* Darker neon pink color when it's a favorite */
+  color: #4d484800; /* Darker neon pink color when it's a favorite */
 }
 
 .favorite-icon:hover {
-  color: #fbfafa; /* Darker neon pink on hover */
+  color: #764040; /* Darker neon pink on hover */
   text-shadow: 0 0 10px #5db0ef; /* Glow effect on hover */
 }
 
