@@ -1,37 +1,33 @@
-// src/components/Yourfav.jsx
-
-import React from 'react'; // Importing React
-import { Link } from 'react-router-dom'; // Importing Link from react-router-dom for navigation
-import { useFavorites } from '../contexts/FavouriteContext'; // Importing useFavorites from FavouriteContext
-import './Header.css'; // Importing CSS for styling
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { useFavorites } from '../contexts/FavouriteContext';
+import './Header.css';
 
 const Yourfav = () => {
-  const { favorites, removeFavorite } = useFavorites(); // Destructuring favorites and removeFavorite from useFavorites
+  const { favorites, removeFavorite } = useFavorites();
 
-  // Convert favorites object to an array of values
-  const favoriteEpisodes = Object.values(favorites); // Converting the favorites object into an array of favorite episodes
+  const favoriteEpisodes = Object.values(favorites);
 
-  // Check if there are no favorite episodes
   if (favoriteEpisodes.length === 0) {
-    return <div>No favorite episodes yet!</div>; // If there are no favorite episodes, display a message
+    return <div style={{ color: 'black' }}>Currently, there are no favorite episodes!</div>; // Setting inline style for text color
   }
 
   return (
     <div className="favorites-container">
-      <h1>Your Favorite Episodes</h1> {/* Title for the favorites list */}
+      <h1>Your Favorite Episodes</h1>
       <ul className="favorites-list">
-        {favoriteEpisodes.map((episode) => ( // Mapping over the array of favorite episodes
+        {favoriteEpisodes.map((episode) => (
           <li key={episode.id} className="favorite-item">
             <div className="podcast-image">
-              <img src={episode.image} alt={episode.title} /> {/* Display episode image */}
+              <img src={episode.image} alt={episode.title} />
             </div>
             <div className="podcast-details">
-              <h3>{episode.title}</h3> {/* Display episode title */}
+              <h3>{episode.title}</h3>
               <p>
-                Show: <Link to={`/show/${episode.showId}`}>{episode.showTitle}</Link> {/* Link to the show's page */}
+                Show: <Link to={`/show/${episode.showId}`}>{episode.showTitle}</Link>
               </p>
-              <p>Season: {episode.seasonNumber}</p> {/* Display season number */}
-              <button onClick={() => removeFavorite(episode.id)}>Remove from Favorites</button> {/* Button to remove episode from favorites */}
+              <p>Season: {episode.seasonNumber}</p>
+              <button onClick={() => removeFavorite(episode.id)}>Remove from Favorites</button>
             </div>
           </li>
         ))}
@@ -40,4 +36,4 @@ const Yourfav = () => {
   );
 };
 
-export default Yourfav; // Exporting the Yourfav component as the default export
+export default Yourfav;
